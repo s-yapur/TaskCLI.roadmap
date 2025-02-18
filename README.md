@@ -28,46 +28,50 @@ java taskCli add [Descripción]
 ```bash
 java taskCli status [id] [estado]
 ```
-3. **modify:** Con 'modify' podremos modificar una tarea localizada por su id en su totalidad, se le pedira que ingrese una nueva descripción y el estado actual de la misma.
+3. **modify:** Con 'modify' podremos modificar una tarea localizada por su id en su totalidad, se le pedira que ingrese una nueva descripción y el estado(este ultimo no es necesario).
 ```bash
 java taskCli modify [id] [descripción] [estado]
 ```
-4. **list:** La función 'list' nos listara las tareas por separado, visualizando cada dato ingresado en la misma.
+4. **list:** La función 'list' nos listara las tareas por separado, visualizando cada dato ingresado en la misma. Esta funcion tiene un filtro por estado, como argumento utiliza los mismos valores que la función status, pero tambien suma a '0', el cual se utiliza para mostrar todas las tareas en la lista.
 ```bash
-java taskCli list
+java taskCli list [status]
 ```
-5. **list:** Con 'delete' podremos eliminar una tarea de la lista localizada por su id.
+5. **delete:** Con 'delete' podremos eliminar una tarea de la lista localizada por su id.
 ```bash
 java taskCli delete [id]
 ```
 
 ## Ejemplos
 ```
-# Añadiendo una tarea
-java taskCli add "Comprar comida"
-# Tarea agregada correctamente(id: 1).
+## Añadiendo una tarea
+>java taskCli add "Comprar comida"
+# Output: Tarea agregada correctamente(id: 1).
 
-# Modificando el estado de una tarea
-java taskCli status 1 1
+## Modificando el estado de una tarea
+>java taskCli status 1 1
 # Output: Tarea marcada como 'En progreso'(id: 1)
-
-java taskCli status 1 2
+>java taskCli status 1 2
 # Output: Tarea marcada como 'Hecho'(id: 1)
 
-task-cli list todo
-task-cli list in-progress
+## Modificando una tarea entera
+>java taskCli modify 1 "Comprar comida y detergente" 1
+# Output: Tarea modificada correctamente(id: 1).
+>java taskCli modify 1 "Comprar comida y detergente" 1
+# Output:
+Tarea marcada como 'En progreso'(id: 1)
+Tarea modificada correctamente(id: 1).
 
-# Actualizando una tarea
-task-cli update 1 "Buy groceries and cook dinner"
-task-cli delete 1
+## Listando tareas
+>java taskCli list 0
+# Output: *Lista todas las tareas
+>java taskCli list 1
+# Output: *Lista todas las tareas que esten en progreso
+>java taskCli list 2
+# Output: *Lista todas las tareas que esten hechas
 
-# Marking a task as in progress or done
-task-cli mark-in-progress 1
-task-cli mark-done 1
-
-# Listing all tasks
-task-cli list
-
+## Eliminando una tarea
+>java delete 1
+# Output: Se elimino la tarea de la lista de tareas (id: 1)
 ```
 
 ## Por qué un programa tan simple?
