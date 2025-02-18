@@ -185,16 +185,34 @@ public class TaskManager{
                 System.out.println("Se elimino el ultimo elemento de la lista");
         }
         // Listar tareas
-        public void listTasks(){
+        public void listTasks(String status){	
+            switch(status){
+                case "0" -> {
+                    status="Todos";
+                }
+                case "1" -> {
+                    status="En progreso.";
+                }
+                case "2" -> {
+                    status="Hecho.";
+                }
+                default -> {
+                    System.out.println("Estado invalido.");
+                    return;
+                }
+            }
+            
             if (!this.tasks.isEmpty()){
                 this.sortTasksById();
                 for (Task task:tasks){ // Lista tarea por tarea hasta acabar con la misma
-                    System.out.println("======================================="); // Separador por iteracion              
-                    System.out.println("id: "+task.getId());                
-                    System.out.println("Descripcion: "+task.getDescripcion());                
-                    System.out.println("Estado: "+task.getEstado());                
-                    System.out.println("Creada el: "+task.getCreadaEl());
-                    System.out.println("Actualizada el: "+task.getActualizadaEl()); 
+                    if(status=="Todos" || task.getEstado().equals(status)){
+                        System.out.println("======================================="); // Separador por iteracion              
+                        System.out.println("id: "+task.getId());                
+                        System.out.println("Descripcion: "+task.getDescripcion());                
+                        System.out.println("Estado: "+task.getEstado());                
+                        System.out.println("Creada el: "+task.getCreadaEl());
+                        System.out.println("Actualizada el: "+task.getActualizadaEl()); 
+                    }
                 }
                 System.out.println("======================================="); // Separador final
             }else{
@@ -214,13 +232,9 @@ public class TaskManager{
         // Marcar estado de la tarea
         public void taskStatus(Task task, String status){
             switch(status){
-                case "0" -> {
-                    task.setEstado("Por hacer.");
-                    System.out.println("Tarea marcada 'Por hacer'(id: "+task.getId()+")");
-                }
                 case "1" -> {
                     task.setEstado("En progreso.");
-                    System.out.println("Tarea marcada 'En progreso'(id: "+task.getId()+")");
+                    System.out.println("Tarea marcada como 'En progreso'(id: "+task.getId()+")");
                 }
                 case "2" -> {
                     task.setEstado("Hecho.");

@@ -14,22 +14,22 @@ public class taskCli{
         // Ayuda - Muestra comandos disponibles
         if(command.equals("help")){
             System.out.println("Uso: taskCli <comando> [argumentos]");
-            System.out.println("Comandos: 'add <descripción>' , 'status <id> <estado>', 'modify <id> <descripción> <estado>', 'list', 'delete <id>'.");
-            System.out.println("Estados: 0= Por hacer, 1= En progreso, 2= Hecho");
+            System.out.println("Comandos: 'add <descripción>' , 'status <id> <estado>', 'modify <id> <descripción> <estado>', 'list <estado>', 'delete <id>'.");
+            System.out.println("1 = En progreso, 2 = Hecho");
         }else{
             try{
 
                 // Añadir tarea
                 switch(command){
                     case "add" -> { // Comando para añadir tarea
-                        if(args.length!=2){
+                        if(args.length<2){
                             System.out.println("Entrada invalida: 'taskCli add <descripción>'"); // Corrección de comando 'add'
                         }else{
                             manager.addTask(args[1]);  // taskCli add (<descripción>)
                         }
                     }
                     case "status" -> { // Comando que modifica el estado de la tarea como(0= Por hacer, 1= En progreso, 2= Hecho)
-                        if(args.length!=2){
+                        if(args.length<2){
                             System.out.println("Entrada invalida: 'taskCli status <id> <estado>"); // Corrección de comando 'add'
                         }else{    
                             int i = Integer.valueOf(args[1]);
@@ -37,7 +37,7 @@ public class taskCli{
                         }
                     }
                     case "modify" -> { // Comando que modifica la tarea con el id pasado por teclado
-                        if(args.length!=2){
+                        if(args.length<2){
                             System.out.println("Entrada invalida: 'taskCli modify <id> <estado> <descripción>'"); // Corrección de comando 'add'
                         }else{
                             int i = Integer.valueOf(args[1]);
@@ -45,14 +45,18 @@ public class taskCli{
                         }
                     }
                     case "list"-> { // Lista todas las tareas agendadas
-                        if(args.length!=2){
+                        if(args.length<2){
                             System.out.println("Entrada invalida: 'taskCli list <id>"); // Corrección de comando 'add'
                         }else{
-                            manager.listTasks(); // list (<id>)
+                            if(!"0".equals(args[1]) && !"1".equals(args[1]) && !"2".equals(args[1])){
+                                System.out.println("Filtro de busqueda invalido: 0 = Todos, 1 = En progreso, 2 = Hechos")         ;                      
+                            }else{
+                                manager.listTasks(args[1]); // list (<estado>)
+                            }
                         }
                     }
                     case "delete"-> { // Elimina la tarea que tenga el id pasado por teclado
-                        if(args.length!=2){
+                        if(args.length<2){
                             System.out.println("Entrada invalida: 'taskCli delete <id>'"); // Corrección de comando 'add'
                         }else{
                             int i = Integer.valueOf(args[1]);
