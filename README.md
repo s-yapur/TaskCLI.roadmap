@@ -22,7 +22,7 @@ java taskCli help
 ## Funciones
 1. **add:** La función 'add' le permite al usuario añadir una nueva tarea a la lista de tareas, al momento de añadirla se le pedira una descripción para almacenarla, si esta cuenta con mas de una palabra se debe ingresar entre comillas la descripción completa.
 ```bash
-java taskCli add [Descripción]
+java taskCli add [descripción]
 ```
 2. **status:** Con 'status' podremos modificar el estado/progreso de una tarea localizada por su id, las opciones posibles son las siguientes -> 1 = En progreso, 2 = Hecho.
 ```bash
@@ -34,7 +34,7 @@ java taskCli modify [id] [descripción] [estado]
 ```
 4. **list:** La función 'list' nos listara las tareas por separado, visualizando cada dato ingresado en la misma. Esta funcion tiene un filtro por estado, como argumento utiliza los mismos valores que la función status, pero tambien suma a '0', el cual se utiliza para mostrar todas las tareas en la lista.
 ```bash
-java taskCli list [status]
+java taskCli list [estado]
 ```
 5. **delete:** Con 'delete' podremos eliminar una tarea de la lista localizada por su id.
 ```bash
