@@ -28,7 +28,7 @@ java taskCli add [descripción]
 ```bash
 java taskCli status [id] [estado]
 ```
-3. **modify:** Con 'modify' podremos modificar una tarea localizada por su id en su totalidad, se le pedira que ingrese una nueva descripción y el estado(este ultimo no es necesario).
+3. **modify:** Con 'modify' podremos modificar una tarea localizada por su id en su totalidad, se le pedira que ingrese una nueva descripción y el estado(si este ultimo le ponemos 0, el estado sigue igual).
 ```bash
 java taskCli modify [id] [descripción] [estado]
 ```
