@@ -70,7 +70,7 @@ Tarea modificada correctamente(id: 1).
 # Output: *Lista todas las tareas que esten hechas
 
 ## Eliminando una tarea
->java delete 1
+>java taskCli delete 1
 # Output: Se elimino la tarea de la lista de tareas (id: 1)
 ```
 
