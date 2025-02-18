@@ -54,7 +54,7 @@ java taskCli delete [id]
 # Output: Tarea marcada como 'Hecho'(id: 1)
 
 ## Modificando una tarea entera
->java taskCli modify 1 "Comprar comida y detergente" 1
+>java taskCli modify 1 "Comprar comida y detergente" 
 # Output: Tarea modificada correctamente(id: 1).
 >java taskCli modify 1 "Comprar comida y detergente" 1
 # Output:
